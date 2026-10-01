@@ -23,3 +23,4 @@ ORDER TRACKING + ADMIN DETAILS FIX
 3. In Admin > Store & Delivery set: ঢাকা সিটির মধ্যে, ঢাকা সাব-আরবান, ঢাকার বাইরে delivery charges.
 4. Checkout now shows all three delivery options at once; selected color, delivery, COD/bKash/Nagad gets a green selected state/check. bKash/Nagad explicitly says “শুধুমাত্র Send Money করবেন”; transaction ID is optional.
 5. Existing orders are preserved. Old `dhaka` orders are displayed/treated as `dhaka_city`.
+Meta Pixel deployment update
