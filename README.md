@@ -17,7 +17,3 @@ It creates `create_order_v2`, repairs the legacy phone columns and reloads the P
 Then replace the website files on the same hosting/Vercel project with this ZIP.
 
 FINAL MASTER FIX v2 2026-10-02: logo replaced; WhatsApp editable; bKash/Nagad sender number + Txn mandatory; readable delivery selection; robust tracking/history; admin payment details; purchase-cost snapshot for gross profit. Run FINAL_DELIVERY_PAYMENT_ORDER_FIX.sql once after deployment.
-
-
-## Product image add/remove fix
-Admin > Products > Edit/Add Product now shows each existing image with a **Remove** button. Main image can also be removed; saving with no image is allowed. Newly uploaded gallery images remain supported.

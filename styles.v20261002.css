@@ -54,12 +54,3 @@
 .payment .payopt.active{background:#effbf3!important;color:#12351f!important;border-color:#2fc866!important}.payment .payopt.active .option-check{background:#2fc866!important;color:#fff!important}
 .product-description>div{white-space:pre-line;line-height:1.75}.support-setting{border:1px solid #2fc86644!important;background:#2fc8660b!important;border-radius:14px;padding:12px!important}
 .history-list{display:grid;gap:10px}.history-card{border:1px solid #ffffff14;border-radius:14px;padding:14px;background:#ffffff05}
-
-.image-manager{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-.image-manager-section{padding:10px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.03)}
-.image-manager-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-.image-manager-item{width:130px;padding:7px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.04)}
-.image-manager-item img{display:block;width:100%;height:90px;object-fit:cover;border-radius:8px}
-.image-manager-meta{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:7px;font-size:11px}
-.image-remove-btn{padding:5px 8px;font-size:11px}
-.image-empty{padding:8px 0}
