@@ -17,3 +17,12 @@ It creates `create_order_v2`, repairs the legacy phone columns and reloads the P
 Then replace the website files on the same hosting/Vercel project with this ZIP.
 
 FINAL MASTER FIX v2 2026-10-02: logo replaced; WhatsApp editable; bKash/Nagad sender number + Txn mandatory; readable delivery selection; robust tracking/history; admin payment details; purchase-cost snapshot for gross profit. Run FINAL_DELIVERY_PAYMENT_ORDER_FIX.sql once after deployment.
+
+
+FINAL V3 notes (2026-10-02):
+- Customer WhatsApp/help number is stored in settings.whatsapp_number and is editable from Admin > Settings. Default 01919889430.
+- Checkout requires Send Money phone + Transaction ID for bKash/Nagad.
+- Delivery and payment selected states use a readable light-green selected card with check mark.
+- Order Tracking includes single-order tracking and all-order history by normalized phone number.
+- Run supabase/FINAL_DELIVERY_PAYMENT_ORDER_FIX.sql once before testing the new checkout/tracking features.
+- Deploy to the same GitHub main branch connected to the existing Vercel project.
