@@ -50,8 +50,8 @@ if(!confirm(`Cancelled order ${o.order_number||''} স্থায়ীভাব�
 const {error}=await sb.from('orders').delete().eq('id',id);
 if(error)toast('Order remove হয়নি: '+error.message);else{toast('Cancelled order রিমুভ হয়েছে');await loadOrders()}
 }
-function viewOrderDetails(id){const o=orders.find(x=>x.id===id);if(!o)return;const items=o.order_items||[];const status=statusLabel(o.status);openModal(`<div class="sectionhead"><h2>অর্ডার ${esc(o.order_number||'')}</h2><button class="btn secondary" onclick="closeModal()">বন্ধ করুন</button></div><div class="adminsection"><h3>Customer Details</h3><div class="formgrid"><div><b>নাম</b><div>${esc(o.customer_name||'')}</div></div><div><b>মোবাইল</b><div>${esc(o.phone||o.customer_phone||'')}</div></div><div><b>Division</b><div>${esc(o.division||'')}</div></div><div><b>District</b><div>${esc(o.district||'')}</div></div><div><b>Thana</b><div>${esc(o.thana||'')}</div></div><div style="grid-column:1/-1"><b>সম্পূর্ণ ঠিকানা</b><div>${esc(o.full_address||o.address||'')}</div></div></div><hr><h3>Order Details</h3><div class="tablewrap"><table class="table"><thead><tr><th>Product</th><th>Color</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>Total</th></tr></thead><tbody>${items.map(i=>`<tr><td>${esc(i.product_name||'')}</td><td>${esc(i.color_name||'')}</td><td>${i.quantity||0}</td><td>${money(i.unit_price)}</td><td>${money(i.discount)}</td><td>${money(i.total_price)}</td></tr>`).join('')}</tbody></table></div><div class="row" style="margin-top:14px"><span>Subtotal</span><b>${money(o.subtotal)}</b></div><div class="row"><span>Discount</span><b>${money(o.discount)}</b></div><div class="row"><span>Delivery Charge</span><b>${money(o.delivery_charge)}</b></div><div class="row" style="font-size:18px"><span>Total</span><b>${money(o.total||o.total_amount)}</b></div><hr><h3>Payment</h3><div>Method: <b>${esc(o.payment_method||'')}</b></div><div>Send Money Number: <b>${esc(o.payment_sender_phone||'')}</b></div><div>Delivery Area: <b>${esc(areaLabel(o.delivery_area||o.area_type))}</b></div><div>Payment Status: <b>${esc(o.payment_status||'')}</b></div><div>Transaction ID: <b>${esc(o.payment_txn_id||o.transaction_id||'')}</b></div><hr><div class="row"><span>Order Status</span><b>${esc(status)}</b></div><div>Note: ${esc(o.note||o.customer_note||'')}</div></div>`)}
-function renderProducts(){const el=$('#productTable');if(!products.length){el.innerHTML='<div class="empty">কোনো product নেই।</div>';return}el.innerHTML=`<table class="table"><thead><tr><th>Product</th><th>Price</th><th>Purchase</th><th>Stock</th><th>Variants</th><th>Action</th></tr></thead><tbody>${products.map(p=>`<tr><td><div style="display:flex;gap:8px;align-items:center"><img src="${esc(p.main_image_url||'assets/logo.png')}" style="width:45px;height:45px;object-fit:cover;border-radius:8px"><span>${esc(p.name)}</span></div></td><td>${money(p.selling_price)}</td><td>${money(p.purchase_price)}</td><td>${p.stock}</td><td>${(p.product_variants||[]).length}</td><td class="adminactions"><button class="btn secondary" onclick="openProductForm('${p.id}')">Edit</button><button class="btn danger" onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join('')}</tbody></table>`}
+function viewOrderDetails(id){const o=orders.find(x=>x.id===id);if(!o)return;const items=o.order_items||[];const status=statusLabel(o.status);openModal(`<div class="sectionhead"><h2>অর্ডার ${esc(o.order_number||'')}</h2><button class="btn secondary" onclick="closeModal()">বন্ধ করুন</button></div><div class="adminsection"><h3>Customer Details</h3><div class="formgrid"><div><b>নাম</b><div>${esc(o.customer_name||'')}</div></div><div><b>মোবাইল</b><div>${esc(o.phone||o.customer_phone||'')}</div></div><div><b>Division</b><div>${esc(o.division||'')}</div></div><div><b>District</b><div>${esc(o.district||'')}</div></div><div><b>Thana</b><div>${esc(o.thana||'')}</div></div><div style="grid-column:1/-1"><b>সম্পূর্ণ ঠিকানা</b><div>${esc(o.full_address||o.address||'')}</div></div></div><hr><h3>Order Details</h3><div class="tablewrap"><table class="table"><thead><tr><th>Product</th><th>Color</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>Total</th></tr></thead><tbody>${items.map(i=>`<tr><td>${esc(i.product_name||'')}</td><td>${esc(i.color_name||'')}</td><td>${i.quantity||0}</td><td>${money(i.unit_price)}</td><td>${money(i.discount)}</td><td>${money(i.total_price)}</td></tr>`).join('')}</tbody></table></div><div class="row" style="margin-top:14px"><span>Subtotal</span><b>${money(o.subtotal)}</b></div><div class="row"><span>Discount</span><b>${money(o.discount)}</b></div><div class="row"><span>Delivery Charge</span><b>${money(o.delivery_charge)}</b></div><div class="row" style="font-size:18px"><span>Total</span><b>${money(o.total||o.total_amount)}</b></div><hr><h3>Payment</h3><div>Method: <b>${esc(o.payment_method||'')}</b></div><div>Send Money Number: <b>${esc(o.payment_sender_phone||'')}</b></div><div>Delivery Area: <b>${esc(areaLabel(o.area_type))}</b></div><div>Payment Status: <b>${esc(o.payment_status||'')}</b></div><div>Transaction ID: <b>${esc(o.payment_txn_id||o.transaction_id||'')}</b></div><hr><div class="row"><span>Order Status</span><b>${esc(status)}</b></div><div>Note: ${esc(o.note||o.customer_note||'')}</div></div>`)}
+function renderProducts(){const el=$('#productTable');if(!products.length){el.innerHTML='<div class="empty">কোনো product নেই।</div>';return}el.innerHTML=`<table class="table"><thead><tr><th>Product</th><th>Price</th><th>Purchase</th><th>Stock</th><th>Variants</th><th>Action</th></tr></thead><tbody>${products.map(p=>`<tr><td><div style="display:flex;gap:8px;align-items:center"><img src="${esc(p.main_image_url||'logo.jpg')}" style="width:45px;height:45px;object-fit:cover;border-radius:8px"><span>${esc(p.name)}</span></div></td><td>${money(p.selling_price)}</td><td>${money(p.purchase_price)}</td><td>${p.stock}</td><td>${(p.product_variants||[]).length}</td><td class="adminactions"><button class="btn secondary" onclick="openProductForm('${p.id}')">Edit</button><button class="btn danger" onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join('')}</tbody></table>`}
 async function uploadFile(file,bucket){
   if(!file)return null;
   if(!['image/jpeg','image/png','image/webp','image/gif'].includes(file.type)) throw new Error('শুধু JPG, PNG, WEBP বা GIF ছবি দিন।');
@@ -64,14 +64,59 @@ async function uploadFile(file,bucket){
   if(!publicUrl) throw new Error('ছবির public URL তৈরি হয়নি।');
   return publicUrl;
 }
+let productImageState={main:null,gallery:[]};
+
+function initProductImageState(p){
+  productImageState={
+    main:p?.main_image_url||null,
+    gallery:Array.isArray(p?.gallery_urls)?[...p.gallery_urls]:[]
+  };
+}
+
+function renderProductImageManager(){
+  const main=productImageState.main;
+  const gallery=productImageState.gallery||[];
+  const mainHtml=main
+    ? `<div class="image-manager-item"><img src="${esc(main)}"><div class="image-manager-meta"><b>Main image</b><button type="button" class="btn danger image-remove-btn" onclick="removeMainProductImage()">Remove</button></div></div>`
+    : `<div class="mini image-empty">No main image selected.</div>`;
+  const galleryHtml=gallery.length
+    ? gallery.map((url,i)=>`<div class="image-manager-item"><img src="${esc(url)}"><div class="image-manager-meta"><span>Image ${i+1}</span><button type="button" class="btn danger image-remove-btn" onclick="removeGalleryProductImage(${i})">Remove</button></div></div>`).join('')
+    : `<div class="mini image-empty">No additional images.</div>`;
+  return `<div class="image-manager">
+    <div class="image-manager-section"><div class="mini">Main image</div>${mainHtml}</div>
+    <div class="image-manager-section"><div class="mini">Additional images</div><div class="image-manager-grid">${galleryHtml}</div></div>
+  </div>`;
+}
+
+function refreshProductImageManager(){
+  const el=document.querySelector('#productImageManager');
+  if(el) el.innerHTML=renderProductImageManager();
+}
+
+function removeMainProductImage(){
+  if(!productImageState.main)return;
+  if(!confirm('Main image রিমুভ করবেন?'))return;
+  productImageState.main=null;
+  refreshProductImageManager();
+  toast('Main image রিমুভ করা হয়েছে। Save Product চাপুন।');
+}
+
+function removeGalleryProductImage(index){
+  if(index<0 || index>=productImageState.gallery.length)return;
+  if(!confirm('এই ছবিটি রিমুভ করবেন?'))return;
+  productImageState.gallery.splice(index,1);
+  refreshProductImageManager();
+  toast('ছবিটি রিমুভ করা হয়েছে। Save Product চাপুন।');
+}
+
 function productFormHtml(p){
   const vars=p?.product_variants||[];
   return `<div class="row"><h2>${p?'Edit':'Add'} Product</h2><button class="btn secondary" onclick="closeModal()">✕</button></div>
   <div class="formgrid">
     <div class="field full"><label>Product name *</label><input id="pName" value="${esc(p?.name||'')}" placeholder="যেমন P9 Pro Max"></div>
-    <div class="field full"><label>Product main image *</label><input id="pImageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></div>
-    <div class="field full"><label>আরও Product Images (একসাথে একাধিক)</label><input id="pGalleryFiles" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif"><div class="mini">একসাথে একাধিক ছবি নির্বাচন করতে পারবেন।</div></div>
-    ${p?.main_image_url?`<div class="field full"><div class="mini">Main image</div><img src="${esc(p.main_image_url)}" style="width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid #ffffff20"></div>`:''}${(p?.gallery_urls||[]).length?`<div class="field full"><div class="mini">বর্তমান অতিরিক্ত ছবি</div><div class="gallery-admin-preview">${(p.gallery_urls||[]).map(x=>`<img src="${esc(x)}">`).join('')}</div></div>`:''}
+    <div class="field full"><label>Product main image</label><input id="pImageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><div class="mini">নতুন ছবি দিলে আগের Main image বদলে যাবে।</div></div>
+    <div class="field full"><label>আরও Product Images (একসাথে একাধিক)</label><input id="pGalleryFiles" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif"><div class="mini">একসাথে একাধিক ছবি যোগ করতে পারবেন। যোগ করার পর নিচে Remove অপশন থাকবে।</div></div>
+    <div id="productImageManager" class="field full">${renderProductImageManager()}</div>
     <div class="field"><label>আগের প্রাইস</label><input id="pCompare" type="number" min="0" value="${p?.compare_at_price??''}" placeholder="৳"></div>
     <div class="field"><label>বর্তমান প্রাইস *</label><input id="pSelling" type="number" min="0" value="${p?.selling_price??0}" placeholder="৳"></div>
     <div class="field"><label>কেনা দাম (হিসাবের জন্য)</label><input id="pPurchase" type="number" min="0" value="${p?.purchase_price??0}" placeholder="৳"></div>
@@ -93,7 +138,7 @@ function variantRow(v={}){
   </div>`
 }
 function addVariantRow(){document.querySelector('#variantRows').insertAdjacentHTML('beforeend',variantRow())}
-function openProductForm(id){editingProductId=id||null;openModal(productFormHtml(id?products.find(p=>p.id===id):null))}
+function openProductForm(id){editingProductId=id||null;const p=id?products.find(p=>p.id===id):null;initProductImageState(p);openModal(productFormHtml(p))}
 async function saveProduct(){
   if(savingProduct)return;
   savingProduct=true;
@@ -104,14 +149,15 @@ async function saveProduct(){
     if(!name){toast('Product name দিন');return}
     const selling=Number($('#pSelling').value||0);
     if(selling<=0){toast('বর্তমান প্রাইস দিন');return}
-    let image=editingProductId ? (products.find(p=>p.id===editingProductId)?.main_image_url||null) : null;
+    let image=productImageState.main||null;
     const mainFile=$('#pImageFile').files[0];
     if(mainFile) image=await uploadFile(mainFile,'product-images');
-    const existing=editingProductId ? (products.find(p=>p.id===editingProductId)?.gallery_urls||[]) : [];
+
+    const galleryUrls=[...(productImageState.gallery||[])];
     const galleryFiles=[...($('#pGalleryFiles')?.files||[])];
-    const uploadedGallery=[]; for(const gf of galleryFiles) uploadedGallery.push(await uploadFile(gf,'product-images'));
-    const galleryUrls=[...existing,...uploadedGallery];
-    if(!image){toast('Product image দিন');return}
+    for(const gf of galleryFiles) galleryUrls.push(await uploadFile(gf,'product-images'));
+
+    // A product is allowed to have no image. The storefront will use its normal fallback.
 
     const payload={
       name,
