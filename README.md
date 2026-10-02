@@ -23,3 +23,24 @@ ORDER TRACKING + ADMIN DETAILS FIX
 3. In Admin > Store & Delivery set: ঢাকা সিটির মধ্যে, ঢাকা সাব-আরবান, ঢাকার বাইরে delivery charges.
 4. Checkout now shows all three delivery options at once; selected color, delivery, COD/bKash/Nagad gets a green selected state/check. bKash/Nagad explicitly says “শুধুমাত্র Send Money করবেন”; transaction ID is optional.
 5. Existing orders are preserved. Old `dhaka` orders are displayed/treated as `dhaka_city`.
+
+
+## FINAL MASTER FIX — 2026-10-02
+এই ZIP-এ আগের Delivery/Payment/Order/Meta Pixel কাজের উপর নিচের পরিবর্তন যোগ করা হয়েছে:
+- Header/footer/floating customer WhatsApp help: default 01919889430; Admin > Store & Delivery থেকে পরিবর্তনযোগ্য।
+- Product detail order: নাম → দাম → ৩-zone delivery charge → সম্পূর্ণ Cash on Delivery available / প্রডাক্ট চেক করে টাকা দিবেন → Color → Cart/Buy Now → Description → Specifications → Copy Product Link।
+- Product description line breaks preserved.
+- Product link copy opens the exact product using `?product=PRODUCT_ID`.
+- Customer Order Tracking-এ মোবাইল নম্বর দিয়ে সব পুরোনো/নতুন order history দেখার অপশন।
+- Admin product form-এ একসাথে একাধিক additional product image upload; existing gallery preserved when editing.
+- Gross Profit formula fixed to use order-item purchase-cost snapshot; cancelled/returned orders excluded. Existing old orders are backfilled with the best available current product/variant purchase cost because historical cost was not stored in the old schema.
+- Admin Orders-এ শুধু Cancelled order-এর জন্য permanent Remove button।
+- Checkout customer name/phone/district/thana/address fields use white background.
+- Existing order creation compatibility retained; final SQL adds purchase-cost snapshot without using the old `line_total`/`purchase_price` bug in the previous live insert schema.
+- Existing products/orders are not automatically deleted. Cancelled orders are only deleted when an admin explicitly presses Remove.
+
+### Supabase
+Run `supabase/FINAL_DELIVERY_PAYMENT_ORDER_FIX.sql` once. This migration adds the WhatsApp setting, delivery settings, purchase-cost snapshot, order-history RPCs and the corrected order function. It does not delete existing data.
+
+### Important
+The frontend files are prepared and JavaScript syntax-checked locally. Live Vercel/Supabase behavior still depends on deploying the ZIP and running the SQL migration in the user's project.

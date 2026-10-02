@@ -16,3 +16,32 @@
 
 /* Final checkout selection UI */
 .delivery-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.deliveryopt{position:relative;display:flex;align-items:flex-start;gap:10px;text-align:left;border:2px solid #ffffff18;background:#0c0c11;color:#fff;border-radius:13px;padding:13px;cursor:pointer;min-height:82px;transition:.15s}.deliveryopt b{display:block;font-size:14px}.deliveryopt small{display:block;color:#aaa;margin-top:5px;line-height:1.35}.deliveryopt .option-check,.payopt .option-check,.variant:after{display:none}.deliveryopt.active{background:#123c22;border-color:#32c96a;box-shadow:0 0 0 2px #32c96a22}.deliveryopt.active .option-check,.payopt.active .option-check{display:grid;place-items:center;flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:#2fc866;color:#07140b;font-weight:900}.payment .payopt{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border:2px solid #ffffff18;background:#0c0c11!important;color:#fff!important;cursor:pointer}.payment .payopt.active{background:#123c22!important;color:#fff!important;border-color:#32c96a!important;box-shadow:0 0 0 2px #32c96a22}.variant{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:9px 13px;border:2px solid #ffffff18!important;border-radius:11px;background:#0c0c11!important;color:#fff!important;cursor:pointer}.variant.active{background:#123c22!important;color:#fff!important;border-color:#32c96a!important;box-shadow:0 0 0 2px #32c96a22}.variant.active:after{content:'✓';display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:#2fc866;color:#07140b;font-weight:900;font-size:12px}.field select{background:#fff;color:#111}.field select option{background:#fff;color:#111}@media(max-width:700px){.delivery-options{grid-template-columns:1fr}.deliveryopt{min-height:auto}.payment{grid-template-columns:1fr}}
+
+/* TI GADGET ZONE final UX */
+.brand img{width:52px;height:52px;object-fit:contain}
+.productdetail .price{margin:7px 0 12px}
+.product-delivery-box,.product-cod-box{padding:11px 13px;border-radius:11px;margin:8px 0;border:1px solid #ffffff18}
+.product-delivery-box{background:#12121a}
+.product-cod-box{background:#12331f;border-color:#32c96a55;color:#eaffef}
+.product-cod-box span{color:#d6f6df}
+.product-description{margin-top:20px;padding-top:16px;border-top:1px solid #ffffff10;line-height:1.75}
+.product-description>div{white-space:pre-line}
+.variant{position:relative}
+.variant .option-check{display:none}
+.variant.active{background:#32c96a!important;border-color:#32c96a!important;color:#06170b!important;box-shadow:0 0 0 2px #32c96a33!important}
+.variant.active .option-check{display:inline-grid;margin-right:6px}
+.copylinkbtn{margin-top:18px;width:100%}
+.thumbs .thumb.active{border-color:#32c96a;box-shadow:0 0 0 2px #32c96a44}
+.field input,.field textarea,.field select{background:#fff;color:#111;border-color:#d7d7d7}
+.field input::placeholder,.field textarea::placeholder{color:#777}
+.deliveryopt,.payopt{position:relative}
+.deliveryopt.active,.payopt.active{background:#32c96a!important;border-color:#32c96a!important;color:#07150b!important;box-shadow:0 0 0 2px #32c96a33!important}
+.option-check{display:none;width:22px;height:22px;border-radius:50%;background:#fff;color:#14883b;place-items:center;font-weight:900;margin-right:7px;flex:0 0 auto}
+.deliveryopt.active .option-check,.payopt.active .option-check{display:inline-grid}
+.history-list{display:grid;gap:10px}
+.history-card{padding:14px;border:1px solid #ffffff16;border-radius:13px;background:#101017}
+.history-phone{flex:1}
+.whatsapp-help{position:fixed;right:18px;bottom:18px;z-index:80;padding:12px 15px;border-radius:999px;background:#20b858;color:#fff;font-weight:900;text-decoration:none;box-shadow:0 8px 25px #0008}
+.gallery-admin-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.gallery-admin-preview img{width:76px;height:76px;object-fit:cover;border-radius:9px;border:1px solid #ffffff18}
+@media(max-width:720px){.productdetail{grid-template-columns:1fr}.whatsapp-help{right:12px;bottom:12px}.delivery-options{grid-template-columns:1fr!important}.formgrid{grid-template-columns:1fr}.field.full{grid-column:1}}
