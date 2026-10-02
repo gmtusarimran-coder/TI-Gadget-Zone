@@ -64,14 +64,34 @@ async function uploadFile(file,bucket){
   if(!publicUrl) throw new Error('ছবির public URL তৈরি হয়নি।');
   return publicUrl;
 }
+let editingMainImageUrl=null;
+let editingGalleryUrls=[];
+
+function removeExistingMainImage(){
+  editingMainImageUrl=null;
+  const box=document.querySelector('#existingMainImage');
+  if(box) box.innerHTML='<div class="mini">Main image সরানো হয়েছে। নতুন ছবি দিলে সেটি Main image হবে।</div>';
+}
+function removeExistingGalleryImage(index){
+  editingGalleryUrls.splice(index,1);
+  const box=document.querySelector('#existingGalleryImages');
+  if(!box){return}
+  box.innerHTML=editingGalleryUrls.length
+    ? editingGalleryUrls.map((x,i)=>`<div class="gallery-admin-item"><img src="${esc(x)}"><button type="button" class="btn danger gallery-remove" onclick="removeExistingGalleryImage(${i})">✕ Remove</button></div>`).join('')
+    : '<div class="mini">কোনো অতিরিক্ত ছবি নেই।</div>';
+}
+
 function productFormHtml(p){
+  editingMainImageUrl=p?.main_image_url||null;
+  editingGalleryUrls=[...(p?.gallery_urls||[])];
   const vars=p?.product_variants||[];
   return `<div class="row"><h2>${p?'Edit':'Add'} Product</h2><button class="btn secondary" onclick="closeModal()">✕</button></div>
   <div class="formgrid">
     <div class="field full"><label>Product name *</label><input id="pName" value="${esc(p?.name||'')}" placeholder="যেমন P9 Pro Max"></div>
-    <div class="field full"><label>Product main image *</label><input id="pImageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></div>
-    <div class="field full"><label>আরও Product Images (একসাথে একাধিক)</label><input id="pGalleryFiles" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif"><div class="mini">একসাথে একাধিক ছবি নির্বাচন করতে পারবেন।</div></div>
-    ${p?.main_image_url?`<div class="field full"><div class="mini">Main image</div><img src="${esc(p.main_image_url)}" style="width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid #ffffff20"></div>`:''}${(p?.gallery_urls||[]).length?`<div class="field full"><div class="mini">বর্তমান অতিরিক্ত ছবি</div><div class="gallery-admin-preview">${(p.gallery_urls||[]).map(x=>`<img src="${esc(x)}">`).join('')}</div></div>`:''}
+    <div class="field full"><label>Product main image *</label><input id="pImageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><div class="mini">নতুন ছবি দিলে আগের Main image replace হবে।</div></div>
+    <div class="field full"><div id="existingMainImage">${p?.main_image_url?`<div class="mini">বর্তমান Main image</div><div class="gallery-admin-item"><img src="${esc(p.main_image_url)}"><button type="button" class="btn danger gallery-remove" onclick="removeExistingMainImage()">✕ Remove</button></div>`:'<div class="mini">কোনো Main image নেই।</div>'}</div></div>
+    <div class="field full"><label>আরও Product Images (একসাথে একাধিক)</label><input id="pGalleryFiles" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif"><div class="mini">একসাথে একাধিক নতুন ছবি নির্বাচন করতে পারবেন।</div></div>
+    <div class="field full"><div class="mini">বর্তমান অতিরিক্ত ছবি</div><div id="existingGalleryImages" class="gallery-admin-preview">${editingGalleryUrls.length?editingGalleryUrls.map((x,i)=>`<div class="gallery-admin-item"><img src="${esc(x)}"><button type="button" class="btn danger gallery-remove" onclick="removeExistingGalleryImage(${i})">✕ Remove</button></div>`).join(''):'<div class="mini">কোনো অতিরিক্ত ছবি নেই।</div>'}</div></div>
     <div class="field"><label>আগের প্রাইস</label><input id="pCompare" type="number" min="0" value="${p?.compare_at_price??''}" placeholder="৳"></div>
     <div class="field"><label>বর্তমান প্রাইস *</label><input id="pSelling" type="number" min="0" value="${p?.selling_price??0}" placeholder="৳"></div>
     <div class="field"><label>কেনা দাম (হিসাবের জন্য)</label><input id="pPurchase" type="number" min="0" value="${p?.purchase_price??0}" placeholder="৳"></div>
@@ -93,7 +113,7 @@ function variantRow(v={}){
   </div>`
 }
 function addVariantRow(){document.querySelector('#variantRows').insertAdjacentHTML('beforeend',variantRow())}
-function openProductForm(id){editingProductId=id||null;openModal(productFormHtml(id?products.find(p=>p.id===id):null))}
+function openProductForm(id){editingProductId=id||null;editingMainImageUrl=null;editingGalleryUrls=[];openModal(productFormHtml(id?products.find(p=>p.id===id):null))}
 async function saveProduct(){
   if(savingProduct)return;
   savingProduct=true;
@@ -104,14 +124,14 @@ async function saveProduct(){
     if(!name){toast('Product name দিন');return}
     const selling=Number($('#pSelling').value||0);
     if(selling<=0){toast('বর্তমান প্রাইস দিন');return}
-    let image=editingProductId ? (products.find(p=>p.id===editingProductId)?.main_image_url||null) : null;
+    let image=editingProductId ? editingMainImageUrl : null;
     const mainFile=$('#pImageFile').files[0];
     if(mainFile) image=await uploadFile(mainFile,'product-images');
-    const existing=editingProductId ? (products.find(p=>p.id===editingProductId)?.gallery_urls||[]) : [];
+    const existing=editingProductId ? [...editingGalleryUrls] : [];
     const galleryFiles=[...($('#pGalleryFiles')?.files||[])];
     const uploadedGallery=[]; for(const gf of galleryFiles) uploadedGallery.push(await uploadFile(gf,'product-images'));
     const galleryUrls=[...existing,...uploadedGallery];
-    if(!image){toast('Product image দিন');return}
+    if(!image && !editingProductId){toast('Product image দিন');return}
 
     const payload={
       name,
