@@ -13,6 +13,10 @@
 .field select{background:#fff;color:#111;}
 .field select option{background:#fff!important;color:#111!important;}
 
+
+/* Final checkout selection UI */
+.delivery-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.deliveryopt{position:relative;display:flex;align-items:flex-start;gap:10px;text-align:left;border:2px solid #ffffff18;background:#0c0c11;color:#fff;border-radius:13px;padding:13px;cursor:pointer;min-height:82px;transition:.15s}.deliveryopt b{display:block;font-size:14px}.deliveryopt small{display:block;color:#aaa;margin-top:5px;line-height:1.35}.deliveryopt .option-check,.payopt .option-check,.variant:after{display:none}.deliveryopt.active{background:#123c22;border-color:#32c96a;box-shadow:0 0 0 2px #32c96a22}.deliveryopt.active .option-check,.payopt.active .option-check{display:grid;place-items:center;flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:#2fc866;color:#07140b;font-weight:900}.payment .payopt{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border:2px solid #ffffff18;background:#0c0c11!important;color:#fff!important;cursor:pointer}.payment .payopt.active{background:#123c22!important;color:#fff!important;border-color:#32c96a!important;box-shadow:0 0 0 2px #32c96a22}.variant{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:9px 13px;border:2px solid #ffffff18!important;border-radius:11px;background:#0c0c11!important;color:#fff!important;cursor:pointer}.variant.active{background:#123c22!important;color:#fff!important;border-color:#32c96a!important;box-shadow:0 0 0 2px #32c96a22}.variant.active:after{content:'✓';display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:#2fc866;color:#07140b;font-weight:900;font-size:12px}.field select{background:#fff;color:#111}.field select option{background:#fff;color:#111}@media(max-width:700px){.delivery-options{grid-template-columns:1fr}.deliveryopt{min-height:auto}.payment{grid-template-columns:1fr}}
+
 /* TI GADGET ZONE final UX */
 .brand img{width:52px;height:52px;object-fit:contain}
 .productdetail .price{margin:7px 0 12px}
@@ -43,4 +47,10 @@
 @media(max-width:720px){.productdetail{grid-template-columns:1fr}.whatsapp-help{right:12px;bottom:12px}.delivery-options{grid-template-columns:1fr!important}.formgrid{grid-template-columns:1fr}.field.full{grid-column:1}}
 
 /* FINAL UI FIX 2026-10-02 */
-.support-setting{border:1px solid #2fc86644!important;background:#2fc8660b!important;border-radius:14px;padding:12px!important}
+.brand img{width:52px!important;height:52px!important;object-fit:contain;display:block}
+.deliveryopt.active{background:#effbf3!important;border-color:#2fc866!important;color:#12351f!important;box-shadow:0 0 0 2px #2fc86622!important}
+.deliveryopt.active b{color:#12351f!important}.deliveryopt.active small{color:#315e43!important}.deliveryopt .option-check{background:#2fc866!important;color:#fff!important}
+.deliveryopt small{font-size:14px!important}.delivery-charge-amount{display:inline-block;margin-top:4px;font-weight:900;font-size:20px!important;line-height:1.15}
+.payment .payopt.active{background:#effbf3!important;color:#12351f!important;border-color:#2fc866!important}.payment .payopt.active .option-check{background:#2fc866!important;color:#fff!important}
+.product-description>div{white-space:pre-line;line-height:1.75}.support-setting{border:1px solid #2fc86644!important;background:#2fc8660b!important;border-radius:14px;padding:12px!important}
+.history-list{display:grid;gap:10px}.history-card{border:1px solid #ffffff14;border-radius:14px;padding:14px;background:#ffffff05}
