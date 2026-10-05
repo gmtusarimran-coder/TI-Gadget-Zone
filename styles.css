@@ -74,3 +74,112 @@
 .gallery-admin-preview .gallery-remove{width:100%;padding:6px 8px;font-size:12px}
 #existingMainImage .gallery-admin-item{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 #existingMainImage .gallery-admin-item img{width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid #ffffff18}
+
+
+/* MOBILE COMPACT LAYOUT — 2026-10-05
+   Desktop/tablet layout intentionally untouched. */
+@media (max-width:700px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .container{width:94%!important;max-width:94%!important}
+
+  /* Header / homepage */
+  .topbar{position:sticky;top:0}
+  .nav{height:52px!important;gap:6px!important}
+  .brand{gap:5px!important;font-size:10px!important;letter-spacing:.2px!important;min-width:0}
+  .brand img{width:30px!important;height:30px!important}
+  .navlinks{gap:4px!important}
+  .cartbtn{padding:6px 8px!important;font-size:11px!important;border-radius:8px!important}
+  .cartbtn .badge{min-width:17px!important;height:17px!important;font-size:9px!important;padding:0 4px!important}
+  .hero{padding:6px 0 3px!important}
+  .slider{min-height:180px!important;height:180px!important;border-radius:12px!important}
+  .slide .copy{left:5%!important;max-width:55%!important}
+  .copy h1{font-size:22px!important;margin:5px 0!important}
+  .copy p{font-size:10px!important;margin:4px 0!important}
+  .copy .btn{padding:6px 8px!important;font-size:9px!important;border-radius:7px!important}
+  .dots{bottom:7px!important;gap:4px!important}
+  .dot{width:5px!important;height:5px!important}.dot.active{width:13px!important}
+  .section{padding:18px 0!important}
+  .sectionhead{gap:7px!important;margin-bottom:9px!important;align-items:center!important}
+  .section h2{font-size:18px!important}
+  .eyebrow{font-size:8px!important;letter-spacing:1px!important}
+  .categories{gap:5px!important}.cat{padding:6px 9px!important;font-size:10px!important}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  .card{border-radius:10px!important}
+  .cardbody{padding:7px!important}.cardbody h3{font-size:11px!important;margin:0 0 4px!important}
+  .price{font-size:14px!important}.old{font-size:9px!important;margin-left:4px!important}
+  .sale{left:5px!important;top:5px!important;padding:3px 5px!important;font-size:8px!important;border-radius:5px!important}
+  .swatches{gap:3px!important;margin:5px 0!important}.swatch{width:12px!important;height:12px!important}
+  .sectionhead input.field{font-size:11px!important;padding:7px!important;border-radius:8px!important}
+
+  /* All public modal screens */
+  body:not(.adminbody) .modal{padding:5px!important;place-items:center!important}
+  body:not(.adminbody) .modalbox{width:92vw!important;max-width:92vw!important;max-height:90vh!important;padding:10px!important;border-radius:12px!important;overflow-y:auto!important;overflow-x:hidden!important}
+
+  /* Product page: deliberately compact for phone screens */
+  body:not(.adminbody) .productdetail{display:block!important}
+  body:not(.adminbody) .productdetail>div{min-width:0!important}
+  body:not(.adminbody) .gallerymain{width:100%!important;height:220px!important;aspect-ratio:auto!important;border-radius:9px!important}
+  body:not(.adminbody) .gallerymain img{width:100%!important;height:100%!important;object-fit:contain!important}
+  body:not(.adminbody) .thumbs{gap:5px!important;margin-top:6px!important}
+  body:not(.adminbody) .thumb{width:42px!important;height:42px!important;border-radius:6px!important}
+  body:not(.adminbody) .productdetail h2{font-size:19px!important;line-height:1.18!important;margin:7px 0 4px!important}
+  body:not(.adminbody) .productdetail .price{font-size:16px!important;margin:4px 0 6px!important}
+  body:not(.adminbody) .productdetail p{font-size:10px!important;line-height:1.35!important;margin:4px 0!important}
+  body:not(.adminbody) .productdetail h4{font-size:10px!important;margin:5px 0 3px!important}
+  body:not(.adminbody) .product-delivery-box,
+  body:not(.adminbody) .product-cod-box{padding:6px 8px!important;margin:4px 0!important;border-radius:7px!important;font-size:9px!important;line-height:1.3!important}
+  body:not(.adminbody) .product-description{margin-top:7px!important;padding-top:7px!important;font-size:10px!important;line-height:1.45!important}
+  body:not(.adminbody) .product-description>div{white-space:pre-line!important}
+  body:not(.adminbody) .variant{padding:6px 9px!important;font-size:10px!important;border-radius:7px!important}
+  body:not(.adminbody) .productdetail .btn{padding:7px 8px!important;font-size:10px!important;border-radius:7px!important}
+  body:not(.adminbody) .copylinkbtn{margin-top:8px!important}
+
+  /* Checkout: starts at the top of the phone viewport */
+  body:not(.adminbody) .modal:has(.checkoutbox){place-items:start center!important;padding:4px!important}
+  body:not(.adminbody) .modalbox.checkoutbox{width:94vw!important;max-width:94vw!important;max-height:calc(100vh - 8px)!important;margin:0 auto!important;padding:9px!important;border-radius:10px!important}
+  body:not(.adminbody) .checkoutbox .row h2{font-size:17px!important;line-height:1.15!important;margin:2px 0!important}
+  body:not(.adminbody) .checkoutbox .row .btn{padding:5px 7px!important;font-size:11px!important}
+  body:not(.adminbody) .checkoutbox .formgrid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important}
+  body:not(.adminbody) .checkoutbox .field.full{grid-column:1/-1!important}
+  body:not(.adminbody) .checkoutbox .field{gap:3px!important}
+  body:not(.adminbody) .checkoutbox .field label{font-size:9px!important}
+  body:not(.adminbody) .checkoutbox .field input,
+  body:not(.adminbody) .checkoutbox .field textarea,
+  body:not(.adminbody) .checkoutbox .field select{font-size:10px!important;padding:7px 8px!important;border-radius:7px!important;min-height:31px!important}
+  body:not(.adminbody) .checkoutbox .field textarea{min-height:46px!important}
+  body:not(.adminbody) .checkoutbox .delivery-options{grid-template-columns:1fr!important;gap:5px!important}
+  body:not(.adminbody) .checkoutbox .deliveryopt{min-height:0!important;padding:7px 8px!important;border-radius:8px!important;gap:6px!important;font-size:10px!important}
+  body:not(.adminbody) .checkoutbox .deliveryopt b{font-size:10px!important}
+  body:not(.adminbody) .checkoutbox .deliveryopt small{font-size:8px!important;margin-top:2px!important;line-height:1.2!important}
+  body:not(.adminbody) .checkoutbox .delivery-charge-amount{font-size:13px!important;margin-top:2px!important}
+  body:not(.adminbody) .checkoutbox .deliveryopt .option-check{width:17px!important;height:17px!important;min-width:17px!important;font-size:10px!important}
+  body:not(.adminbody) .checkoutbox .payment{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+  body:not(.adminbody) .checkoutbox .payopt{min-height:36px!important;padding:5px 3px!important;font-size:9px!important;border-radius:7px!important}
+  body:not(.adminbody) .checkoutbox .payopt .option-check{width:16px!important;height:16px!important;font-size:9px!important;margin-right:3px!important}
+  body:not(.adminbody) .checkoutbox .notice{padding:6px 7px!important;border-radius:7px!important;font-size:9px!important;line-height:1.3!important}
+  body:not(.adminbody) .checkoutbox #paymentInfo .field{margin-top:5px!important}
+  body:not(.adminbody) .checkoutbox #checkoutSummary{margin:6px 0!important;padding:6px 7px!important}
+  body:not(.adminbody) .checkoutbox #checkoutSummary .row{font-size:9px!important}
+  body:not(.adminbody) .checkoutbox #checkoutSummary .row:last-child{font-size:12px!important;margin-top:3px!important}
+  body:not(.adminbody) .checkoutbox #confirmOrderBtn{padding:8px!important;font-size:11px!important;border-radius:7px!important}
+
+  /* Cart */
+  body:not(.adminbody) .cartpanel{width:90vw!important;padding:10px!important}
+  body:not(.adminbody) .cartpanel h2{font-size:16px!important}
+  body:not(.adminbody) .cartitem{grid-template-columns:45px 1fr auto!important;gap:6px!important;padding:7px 0!important}
+  body:not(.adminbody) .cartitem img{width:45px!important;height:45px!important}
+  body:not(.adminbody) .cartitem h4{font-size:10px!important;margin:0!important}
+  body:not(.adminbody) .cartitem p{font-size:9px!important}
+  body:not(.adminbody) .cartpanel .btn{padding:7px 8px!important;font-size:10px!important}
+
+  .whatsapp-help{right:8px!important;bottom:8px!important;padding:8px 10px!important;font-size:10px!important}
+}
+
+@media(max-width:380px){
+  body:not(.adminbody) .modalbox{width:94vw!important;max-width:94vw!important;padding:8px!important}
+  body:not(.adminbody) .gallerymain{height:195px!important}
+  body:not(.adminbody) .productdetail h2{font-size:17px!important}
+  body:not(.adminbody) .checkoutbox .formgrid{gap:5px!important}
+  body:not(.adminbody) .checkoutbox .field input,
+  body:not(.adminbody) .checkoutbox .field textarea{padding:6px 7px!important;font-size:9px!important}
+}
