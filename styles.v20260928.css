@@ -54,3 +54,94 @@
 .payment .payopt.active{background:#effbf3!important;color:#12351f!important;border-color:#2fc866!important}.payment .payopt.active .option-check{background:#2fc866!important;color:#fff!important}
 .product-description>div{white-space:pre-line;line-height:1.75}.support-setting{border:1px solid #2fc86644!important;background:#2fc8660b!important;border-radius:14px;padding:12px!important}
 .history-list{display:grid;gap:10px}.history-card{border:1px solid #ffffff14;border-radius:14px;padding:14px;background:#ffffff05}
+
+/* MOBILE RESPONSIVE FIX — 2026-10-05
+   Desktop/tablet layout intentionally unchanged. These rules only apply to small screens. */
+@media (max-width: 700px){
+  body{font-size:14px;overflow-x:hidden}
+  .container{width:94%;max-width:100%;}
+  .topbar{position:sticky}
+  .nav{height:58px;gap:8px;min-width:0}
+  .brand{gap:6px;min-width:0;overflow:hidden}
+  .brand img{width:38px!important;height:38px!important;flex:0 0 38px}
+  .brand span{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .navlinks{gap:4px;min-width:0;overflow-x:auto;scrollbar-width:none}
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a,.navbtn{padding:7px 8px;font-size:12px;white-space:nowrap}
+  .cartbtn{gap:4px}
+  .hero{padding:10px 0 4px}
+  .slider{min-height:190px;border-radius:14px}
+  .slide .copy{left:5%;max-width:58%}
+  .copy h1{font-size:24px;margin:5px 0}
+  .copy p{font-size:12px;margin:5px 0}
+  .copy .btn{padding:8px 10px;font-size:12px}
+  .section{padding:24px 0}
+  .sectionhead{align-items:stretch;flex-direction:column;gap:10px;margin-bottom:13px}
+  .section h2{font-size:21px}
+  .sectionhead>div:last-child{width:100%!important;min-width:0!important}
+  .sectionhead .field input{padding:9px 10px}
+  .categories{gap:7px}
+  .cat{padding:7px 11px;font-size:12px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .card{border-radius:12px}
+  .cardbody{padding:9px}
+  .cardbody h3{font-size:13px;margin-bottom:5px;line-height:1.3}
+  .price{font-size:16px}
+  .old{font-size:10px;margin-left:4px}
+  .swatches{margin:6px 0}
+  .swatch{width:14px;height:14px}
+  .btn{padding:9px 11px;border-radius:9px;font-size:12px}
+  .modal{padding:7px;align-items:center}
+  .modalbox{width:100%;max-width:100%;max-height:94vh;border-radius:14px;padding:13px;overflow:auto}
+  .modalbox h2{font-size:20px;line-height:1.25;margin:5px 0}
+  .productdetail{grid-template-columns:1fr;gap:13px}
+  .gallerymain{width:min(100%,280px);margin:0 auto;border-radius:12px}
+  .thumbs{gap:6px;margin-top:7px}
+  .thumb{width:48px;height:48px}
+  .productdetail .price{font-size:21px}
+  .productdetail p{font-size:13px;line-height:1.55}
+  .productdetail h4{font-size:13px;margin:9px 0 6px}
+  .variant{padding:7px 10px;font-size:12px}
+  .formgrid{grid-template-columns:1fr;gap:9px}
+  .field.full{grid-column:auto}
+  .field{gap:5px}
+  .field label{font-size:11px}
+  .field input,.field textarea,.field select{padding:9px 10px;border-radius:9px;font-size:13px}
+  .delivery-options{grid-template-columns:1fr!important;gap:7px!important}
+  .deliveryopt{min-height:0!important;padding:9px!important;border-radius:10px!important;gap:7px!important}
+  .deliveryopt b{font-size:12px!important}
+  .deliveryopt small{font-size:10px!important;margin-top:3px!important;line-height:1.3!important}
+  .delivery-charge-amount{font-size:16px!important;margin-top:3px!important}
+  .deliveryopt.active .option-check{width:19px!important;height:19px!important;min-width:19px!important;font-size:11px!important}
+  .payment{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+  .payment .payopt{min-height:43px!important;padding:7px 4px!important;border-radius:9px!important;font-size:11px!important;gap:4px!important}
+  .payment .payopt.active .option-check{width:18px!important;height:18px!important;font-size:10px!important}
+  .notice{padding:9px;font-size:11px;line-height:1.45}
+  .notice .field{margin-top:7px!important}
+  #checkoutSummary{margin:9px 0!important}
+  #checkoutSummary .row{font-size:12px}
+  #checkoutSummary .row:last-child{font-size:15px!important}
+  #confirmOrderBtn{font-size:13px!important;padding:10px!important}
+  .cartpanel{width:92vw;padding:14px}
+  .cartpanel h2{font-size:19px!important}
+  .cartitem{grid-template-columns:48px 1fr auto;gap:7px;padding:9px 0}
+  .cartitem img{width:48px;height:48px}
+  .qty{gap:5px;margin-top:4px}
+  .qty button{width:22px;height:22px}
+  .footer{padding:25px 0;margin-top:30px}
+}
+
+@media (max-width: 380px){
+  .brand span{font-size:10px}
+  .navlinks a{font-size:11px;padding:6px 7px}
+  .grid{gap:7px}
+  .cardbody{padding:8px}
+  .cardbody h3{font-size:12px}
+  .price{font-size:15px}
+  .slider{min-height:165px}
+  .copy h1{font-size:20px}
+  .copy p{font-size:11px}
+  .gallerymain{width:min(100%,240px)}
+  .modalbox{padding:11px}
+  .payment .payopt{font-size:10px}
+}
