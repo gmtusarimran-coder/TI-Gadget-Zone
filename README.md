@@ -40,3 +40,9 @@ MOBILE + IMAGE EGRESS OPTIMIZATION (2026-10-14):
 - Product/banner uploads use client-side image optimization to WebP (up to 1000px, target <=300 KB where possible) and a 1-year Storage cache-control header.
 - Existing images already stored in Supabase are not automatically re-compressed by a CSS/ZIP update. To reduce future image egress, re-upload oversized existing product/banner images through the Admin Panel image uploader, which optimizes new uploads.
 - Supabase monthly quota cannot be guaranteed; actual usage depends on visitors, image sizes, and repeated downloads.
+
+
+## Logo path compatibility fix (2026-10-14)
+- Added `assets/logo.png` as a real PNG converted from the bundled `assets/logo.webp`.
+- Updated storefront header/footer/favicon and admin login/sidebar logo references to use `assets/logo.png?v=20261014-logofix1`.
+- Kept `assets/logo.webp` in the archive as well; no database or Supabase SQL changes are required.
